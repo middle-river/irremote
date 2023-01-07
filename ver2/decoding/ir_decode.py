@@ -2,7 +2,6 @@
 
 PERIOD = 1.0 / (8294400.0 / 64)  # Clock / Prescaler
 
-import math
 import sys
 
 data = []
@@ -10,17 +9,13 @@ for line in sys.stdin:
   d = line.strip().split()
   if data:
     assert len(d) == len(data[0])
+  d = [int(x, 16) * PERIOD for x in d]
   data.append(d)
-buf = []
-error_max = 0.0
+result = []
 for d in zip(*data):
-  values = [int(x, 16) * PERIOD for x in d]
-  mean = sum(values) / len(values)
-  buf.append('%f' % (mean * 1000000.0))  # microsecond
-  for v in values:
-    error = v - mean
-    error = math.sqrt(error * error)
-    error = error / v
-    error_max = max(error_max, error)
-print('Error: %.1f%%' % (100.0 * error_max), file=sys.stderr)
-print(' '.join(buf))
+  mean = sum(d) / len(d)
+  result.append(mean)
+for i, values in enumerate(data):
+  error = max([abs(p - q) / q for p, q in zip(values, result)])
+  print('ERROR(%d)=%.1f%%' % (i + 1, error * 100.0), file=sys.stderr)
+print(' '.join(['%f' % (value * 1000000.0) for value in result]))  # microsecond

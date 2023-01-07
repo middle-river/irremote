@@ -1,0 +1,91 @@
+pulse0:
+	ldi	YL, lo8(20)
+	ldi	YH, hi8(20)
+	rjmp	pulse
+pulse1:
+	ldi	YL, lo8(22)
+	ldi	YH, hi8(22)
+	rjmp	pulse
+pulse2:
+	ldi	YL, lo8(62)
+	ldi	YH, hi8(62)
+	rjmp	pulse
+pulse3:
+	ldi	YL, lo8(169)
+	ldi	YH, hi8(169)
+	rjmp	pulse
+pulse4:
+	ldi	YL, lo8(340)
+	ldi	YH, hi8(340)
+	rjmp	pulse
+
+ext_int:
+	clr	XL
+	rcall	pulse4
+	rcall	pulse3
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse2
+	rcall	pulse1
+	rcall	pulse0
+	rcall	pulse1
+	ret
